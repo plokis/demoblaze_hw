@@ -10,12 +10,27 @@ import java.time.Duration;
 
 public class LogInOutTest extends BaseTest {
 
+    /*
+    1. Открыть страницу https://www.demoblaze.com/
+    2. Ввести в поле Username значение klopis и в поле Password значение spid_demoblaze
+    3. Нажать кнопку Log in
+    4. Проверить, что мы видим сообщение Welcom klopis в правом верхнем углу страницы
+    */
+
+    /*
+    1. Открыть страницу https://www.demoblaze.com/
+    2. Ввести в поле Username значение klopis и в поле Password значение spid_demoblaze
+    3. Нажать кнопку Log in
+    4. Нажать кнопку Log out
+    5. Проверить, что мы не видим сообщение Welcom klopis в правом верхнем углу страницы
+    */
+    
     @BeforeMethod
     public void preconditionLogIn() {
         homePage.open();
         homePage.login("klopis","spid_demoblaze");
     }
-
+    
     @Test
     public void checkLogIn() {
         Assert.assertEquals(homePage.getWelcomeMessage(), "Welcome klopis");
