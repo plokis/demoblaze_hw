@@ -4,17 +4,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CheckoutTest extends BaseTest {
+public class CheckProductInCartTest extends BaseTest {
 
     @Test
-    public void checkout() {
+    public void checkProductInCart() {
         homePage.open();
         homePage.clickOpenProductPageButton("Samsung galaxy s6");
         productPage.clickAddToCartButton();
         wait.until(ExpectedConditions.alertIsPresent()).accept();
         productPage.clickShoppingCart();
-        cartPage.clickPlaceOrderButton();
-        cartPage.fillInfoPurchaseWindow("c","c","c","c","c","c");
-        Assert.assertTrue(cartPage.checkSuccessfulOrderIcon());
+        Assert.assertTrue(cartPage.checkProduct("Samsung galaxy s6"));
     }
 }

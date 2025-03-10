@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CartPage extends BasePage{
 
@@ -11,6 +10,7 @@ public class CartPage extends BasePage{
         super(driver);
     }
 
+    private static final String PRODUCT_NAME = "//td[text()='%s']";
     private static final By PLACE_ORDER_BUTTON = By.className("btn-success");
     private static final By NAME_FIELD = By.id("name");
     private static final By COUNTRY_FIELD = By.id("country");
@@ -42,5 +42,10 @@ public class CartPage extends BasePage{
 
     public boolean checkSuccessfulOrderIcon() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(SUCCESSFUL_ICON)).isDisplayed();
+    }
+
+    public boolean checkProduct(String product) {
+        By productName = By.xpath(String.format(PRODUCT_NAME, product));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(productName)).isDisplayed();
     }
 }
